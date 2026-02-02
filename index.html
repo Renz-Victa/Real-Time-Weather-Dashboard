@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Time Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Weather</h1>
+        <input type="text" id="cityInput" placeholder="Enter a city..." />
+        <button onclick="getWeather()">Search</button>
+        <div id="weather" class="weather-box">
+            <h2 id="city"></h2>
+            <p id="Temperature">Temperature</p>
+            <p id="Description">Description</p>
+            <p id="Humidity">Humidity</p>
+            <p id="Wind">Wind</p>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
