@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="search-section">
+            <input type="text" id="city-input" placeholder="Enter city name (e.g., London)">
+            <button id="search-btn">Search</button>
+            <button id="location-btn">📍</button>
+        </header>
+
+        <div id="error-message" class="error hidden"></div>
+
+        <main id="current-weather" class="weather-card hidden">
+            <div class="weather-header">
+                <h2 id="city-name">--</h2>
+                <p id="date">--</p>
+            </div>
+            <div class="weather-body">
+                <img id="weather-icon" src="" alt="Weather Icon">
+                <h1 id="temperature">--°C</h1>
+                <p id="description">--</p>
+            </div>
+            <div class="weather-details">
+                <div class="detail"><span>Humidity </span><span id="humidity">--%</span></div>
+                <div class="detail"><span>Wind </span><span id="wind-speed">-- m/s</span></div>
+            </div>
+        </main>
+
+        <section id="forecast-section" class="hidden">
+            <h3>5-Day Forecast</h3>
+            <div id="forecast-grid" class="forecast-grid">
+                </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

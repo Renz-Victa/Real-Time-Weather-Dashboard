@@ -1,0 +1,83 @@
+:root {
+    --primary: #4a90e2;
+    --glass: rgba(255, 255, 255, 0.2);
+    --text: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.dashboard-container {
+    width: 90%;
+    max-width: 600px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Search Input Styling */
+.search-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover { 
+    background: #357abd; 
+}
+
+/* Utility Classes */
+.hidden { 
+    display: none; 
+}
+
+.error { 
+    color: #ff6b6b; 
+    margin-bottom: 1rem; 
+    text-align: center; 
+}
+
+/* Forecast Grid */
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.forecast-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+}
