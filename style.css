@@ -1,3 +1,34 @@
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar nav {
+        margin-top: 10px;
+    }
+}
+
+.navbar {
+    display: flex-start;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(194, 194, 194);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 20px;
+}
+
+.navbar a {
+    color: white;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    color: greenyellow;
+}
+
 :root {
     --primary: #4a90e2;
     --glass: rgba(255, 255, 255, 0.2);
@@ -5,14 +36,30 @@
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    font-family: 'Arial', sans-serif;
+    background: rgb(255, 255, 255);
     color: var(--text);
     min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     margin: 0;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 20px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .dashboard-container {
@@ -22,10 +69,11 @@ body {
     backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 2rem;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    flex: 1;
+    background-color: rgb(232, 206, 175);
 }
 
-/* Search Input Styling */
 .search-section {
     display: flex;
     gap: 10px;
@@ -48,14 +96,13 @@ button {
     background: var(--primary);
     color: white;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: 0.3s;
 }
 
 button:hover { 
     background: #357abd; 
 }
 
-/* Utility Classes */
 .hidden { 
     display: none; 
 }
@@ -66,7 +113,6 @@ button:hover {
     text-align: center; 
 }
 
-/* Forecast Grid */
 .forecast-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
