@@ -13,8 +13,8 @@
     display: flex-start;
     justify-content: space-between;
     align-items: center;
-    background: rgb(194, 194, 194);
-    color: white;
+    background: rgb(204, 204, 204);
+    color: rgb(253, 238, 238);
     padding: 15px 30px;
     border-radius: 20px;
 }
