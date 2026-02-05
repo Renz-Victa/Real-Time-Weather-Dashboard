@@ -13,10 +13,16 @@
     display: flex-start;
     justify-content: space-between;
     align-items: center;
-    background: rgb(204, 204, 204);
-    color: rgb(253, 238, 238);
+    background: gray;
+    color: rgb(0, 0, 0);
     padding: 15px 30px;
     border-radius: 20px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 900;
+    font-style: italic;
 }
 
 .navbar a {
