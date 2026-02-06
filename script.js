@@ -7,6 +7,9 @@ const errorMessage = document.getElementById('error-message');
 const currentWeatherSection = document.getElementById('current-weather');
 const forecastSection = document.getElementById('forecast-section');
 const forecastGrid = document.getElementById('forecast-grid');
+const loader = document.getElementById("loader");
+let unit = localStorage.getItem("unit") || "metric";
+const unitToggle = document.getElementById("unitToggle");
 
 searchBtn.addEventListener('click', () => getWeather(cityInput.value));
 cityInput.addEventListener('keypress', (e) => {
@@ -113,3 +116,20 @@ if (!localStorage.getItem("theme")) {
         prefersDark ? "dark" : "light"
     );
 }
+
+function updateUnitButton() {
+    unitToggle.textContent = unit === "metric" ? "°F" : "°C";
+}
+
+updateUnitButton();
+
+unitToggle.addEventListener("click", () => {
+    unit = unit === "metric" ? "imperial" : "metric";
+    localStorage.setItem("unit", unit);
+    updateUnitButton();
+
+    const city = localStorage.getItem("lastCity");
+    if (city) {
+        getWeather(city);
+    }
+});
