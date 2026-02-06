@@ -1,7 +1,6 @@
-const API_KEY = 'a2ed6acd213609ad23e86b3fb2196c02'; // Replace with your OpenWeatherMap Key
+const API_KEY = 'a2ed6acd213609ad23e86b3fb2196c02'; 
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
-// DOM Elements
 const cityInput = document.getElementById('city-input');
 const searchBtn = document.getElementById('search-btn');
 const errorMessage = document.getElementById('error-message');
@@ -9,39 +8,32 @@ const currentWeatherSection = document.getElementById('current-weather');
 const forecastSection = document.getElementById('forecast-section');
 const forecastGrid = document.getElementById('forecast-grid');
 
-// Event Listeners
 searchBtn.addEventListener('click', () => getWeather(cityInput.value));
 cityInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') getWeather(cityInput.value);
 });
 
-// Load last searched city on startup
 window.addEventListener('load', () => {
     const lastCity = localStorage.getItem('lastCity');
     if (lastCity) getWeather(lastCity);
 });
 
-// Main Fetch Function
 async function getWeather(city) {
     if (!city) return;
     
     try {
         errorMessage.classList.add('hidden');
         
-        // 1. Fetch Current Weather
         const weatherRes = await fetch(`${BASE_URL}/weather?q=${city}&units=metric&appid=${API_KEY}`);
         if (!weatherRes.ok) throw new Error('City not found');
         const weatherData = await weatherRes.json();
         
-        // 2. Fetch 5-Day Forecast
         const forecastRes = await fetch(`${BASE_URL}/forecast?q=${city}&units=metric&appid=${API_KEY}`);
         const forecastData = await forecastRes.json();
 
-        // 3. Update UI
         updateCurrentWeather(weatherData);
         updateForecast(forecastData.list);
         
-        // 4. Save to Local Storage
         localStorage.setItem('lastCity', city);
         
     } catch (error) {
@@ -50,7 +42,6 @@ async function getWeather(city) {
 }
 
 function updateCurrentWeather(data) {
-    // Reveal sections
     currentWeatherSection.classList.remove('hidden');
     forecastSection.classList.remove('hidden');
 
@@ -66,10 +57,8 @@ function updateCurrentWeather(data) {
 }
 
 function updateForecast(forecastList) {
-    forecastGrid.innerHTML = ''; // Clear previous data
+    forecastGrid.innerHTML = ''; 
 
-    // Filter: OpenWeatherMap returns data every 3 hours. 
-    // We want one entry per day, ideally around noon (12:00:00).
     const dailyForecasts = forecastList.filter(reading => reading.dt_txt.includes("12:00:00"));
 
     dailyForecasts.forEach(day => {
@@ -94,3 +83,25 @@ function showError(message) {
     currentWeatherSection.classList.add('hidden');
     forecastSection.classList.add('hidden');
 }
+
+const toggleBtn = document.getElementById("themeToggle");
+const currentTheme = localStorage.getItem("theme");
+
+if (currentTheme) {
+    document.documentElement.setAttribute("data-theme", currentTheme);
+    toggleBtn.textContent = currentTheme === "dark" ? "Light mode" : "Dark Mode";
+}
+
+toggleBtn.addEventListener("click", () => {
+    let theme = document.documentElement.getAttribute("data-theme");
+
+    if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+        toggleBtn.textContent = "Dark Mode";
+    } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+        toggleBtn.textContent = "Light Mode";
+    }
+});

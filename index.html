@@ -5,20 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <header class="navbar">
     <div class="logo">
         LOGO
     </div>
+
     <nav>
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
     </nav>
+
+    <button id="themeToggle">
+        Dark Mode
+    </button>
+
 </header>
 
-    <div class="dashboard-container">
+    <div class="dashboard-container block rounded-lg bg-gradient-to-r from-beige-500 to-beige-600 font-semibold">
         <header class="search-section">
             <input type="text" id="city-input" placeholder="Enter city name (e.g., London)">
             <button id="search-btn">Search</button>
