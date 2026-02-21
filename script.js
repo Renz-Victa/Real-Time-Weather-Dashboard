@@ -109,18 +109,6 @@ toggleBtn.addEventListener("click", () => {
     }
 });
 
-if (!localStorage.getItem("theme")) {
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    document.documentElement.setAttribute(
-        "data-theme",
-        prefersDark ? "dark" : "light"
-    );
-}
-
-function updateUnitButton() {
-    unitToggle.textContent = unit === "metric" ? "°F" : "°C";
-}
-
 updateUnitButton();
 
 unitToggle.addEventListener("click", () => {
