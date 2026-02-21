@@ -15,3 +15,10 @@ Built to deliver accurate forecasts and important weather insights, which demons
 - 🕒 Real-time data updates from a weather API
 - 📱 Fully responsive design for mobile and desktop
 
+## 🛠️ Technologies Used
+
+- HTML5
+- CSS3
+- JavaScript
+- Weather API Integration
+- Responsive design principles
