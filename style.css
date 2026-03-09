@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgb(201, 193, 121);
+    background-color: rgb(41, 253, 253);
     color: rgb(0, 0, 0);
     padding: 10px 25px;
     margin: 15px;
@@ -100,10 +100,19 @@ button {
     color: white;
     cursor: pointer;
     transition: 0.3s;
+    display: inline-block;
 }
 
 button:hover {
     background: #357abd;
+}
+
+.Search {
+    padding: 8px;
+    border-radius: 10px;
+    border-color: 1px solid;
+    display: inline-block;
+    width: auto;
 }
 
 .hidden {
