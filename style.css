@@ -9,6 +9,9 @@
     border-radius: 50px;
     -webkit-mask: linear-gradient(transparent, white);
     mask: linear-gradient(transparent, white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
@@ -67,6 +70,8 @@
     display: inline-block;
 }
 
+
+
 :root {
     --primary: #4a90e2;
     --glass: rgba(255, 255, 255, 0.2);
@@ -81,15 +86,6 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0;
-}
-
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 footer {
@@ -124,10 +120,6 @@ footer:hover {
     border-radius: 16px;
     background-color: white;
     display: inline-block;
-}
-
-button:hover {
-    background: #357abd;
 }
 
 .Search {
