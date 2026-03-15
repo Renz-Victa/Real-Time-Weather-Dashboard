@@ -7,8 +7,6 @@
     padding: 10px 25px;
     margin: 15px;
     border-radius: 50px;
-    -webkit-mask: linear-gradient(transparent, white);
-    mask: linear-gradient(transparent, white);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -77,12 +75,6 @@
     box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
 }
 
-:root {
-    --primary: #4a90e2;
-    --glass: rgba(255, 255, 255, 0.2);
-    --text: #ffffff;
-}
-
 body {
     font-family: 'Arial', sans-serif;
     background: rgb(255, 255, 255);
@@ -116,7 +108,6 @@ footer:hover {
     display: inline-block;
     font-family: Arial, sans-serif;
     font-style: italic;
-    display: inline-block;
 }
 
 .city-input {
@@ -187,11 +178,7 @@ html {
     --accent: #60a5fa;
 }
 
-body {
-    background: var(--bg-color);
-    color: var(--text-color);
-    transition: backgroundColor 0.3s, color 0.3s;
-}
+
 
 .card {
     background: var(--card-bg);

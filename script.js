@@ -7,9 +7,10 @@ const errorMessage = document.getElementById('error-message');
 const currentWeatherSection = document.getElementById('current-weather');
 const forecastSection = document.getElementById('forecast-section');
 const forecastGrid = document.getElementById('forecast-grid');
-const loader = document.getElementById("loader");
 let unit = localStorage.getItem("unit") || "metric";
 const unitToggle = document.getElementById("unitToggle");
+let currentController = null;
+let debounceTimer;
 
 searchBtn.addEventListener('click', () => getWeather(cityInput.value));
 cityInput.addEventListener('keypress', (e) => {
@@ -27,11 +28,16 @@ async function getWeather(city) {
     try {
         errorMessage.classList.add('hidden');
 
-        const weatherRes = await fetch(`${BASE_URL}/weather?q=${city}&units=metric&appid=${API_KEY}`);
+        const [weatherRes, forecastRes] = await Promise.all([
+            fetch(`${BASE_URL}/weather?q=${city}&units=${unit}&appid=${API_KEY}`),
+            fetch(`${BASE_URL}/forecast?q=${city}&units=${unit}&appid=${API_KEY}`),
+        ]);
+
         if (!weatherRes.ok) throw new Error('City not found');
         const weatherData = await weatherRes.json();
 
-        const forecastRes = await fetch(`${BASE_URL}/forecast?q=${city}&units=metric&appid=${API_KEY}`);
+        const unitLabel = unit === 'metric' ? '°C' : '°F';
+        document.getElementById('temperature').textContent = `${Math.round(data.main.temp)}${unitLabel}`;
         const forecastData = await forecastRes.json();
 
         updateCurrentWeather(weatherData);
@@ -80,6 +86,19 @@ function updateForecast(forecastList) {
     });
 }
 
+document.getElementById('location-btn').addEventListener('click', () => {
+    navigator.geolocatioon.getCurrentPosition(
+        async ({ coords }) => {
+            const res = await fetch(
+                `${BASE_URL}/weather?lat=${coords.latitude}&lon=${coords.longitude}&units=${unit}&appid=${API_KEY}`
+            );
+            const data = await res.json();
+            getWeather(data.name);
+        },
+        () => showError('Unable to get your location')
+    );
+});
+
 function showError(message) {
     errorMessage.textContent = message;
     errorMessage.classList.remove('hidden');
@@ -122,4 +141,20 @@ unitToggle.addEventListener("click", () => {
     if (city) {
         getWeather(city);
     }
+});
+
+async function getWeather(city) {
+    if (currentController) currentController.abort();
+    currentController = new AbortController();
+    const { signal } = currentController;
+
+    const [weatherRes, forecastRes] = await Promise.all([
+        fetch(`...`, { signal }),
+        fetch(`...`, { signal }),
+    ])
+}
+
+cityInput.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => getWeather(cityInput.value), 500);
 });
