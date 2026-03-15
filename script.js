@@ -23,6 +23,15 @@ window.addEventListener('load', () => {
 });
 
 async function getWeather(city) {
+    showSkeleton();
+    try {
+        updateCurrentWeather(data);
+    } catch (e) {
+        showError(e.message);
+    } finally {
+        hideSkeleton();
+    }
+
     if (!city) return;
 
     try {
