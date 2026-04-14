@@ -2,8 +2,6 @@
  
 A production-ready weather dashboard built with vanilla HTML, CSS and JavaScript. Search any city in the world for live weather conditions, hourly updates and a 5-day forecast.
  
-**Live demo:** [renz-victa.github.io/Real-Time-Weather-Dashboard](https://renz-victa.github.io/Real-Time-Weather-Dashboard/)
- 
 ---
  
 ## Features
@@ -143,7 +141,7 @@ This project targets WCAG 2.1 AA compliance:
  
 ## License
  
-MIT — free to use, modify, and distribute.
+MIT — free to use, modify and distribute.
  
 ---
  
